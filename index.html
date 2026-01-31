@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Clicker Game</title>
+</head>
+<body>
+<p>Hello game!</p>
+
+  <h1>My Clicker Game</h1>
+  <p>Points: <span id="points">0</span></p>
+
+  <button onclick="givePoint()">Click me!</button>
+    <br><br>
+    <button onclick="upgradeClick()">Upgrade Click (+1)</button>
+    <p>Upgrade Cost: <span id="upgradeCost">10</span></p>
+
+  <script>
+    let points = 0;
+    let pointsPerClick = 1;
+    let upgradeCost = 10;
+
+    function givePoint() {
+      points = points + pointsPerClick;
+      document.getElementById("points").textContent = points;
+    }
+  function upgradeClick() {
+  if (points >= upgradeCost) {
+    points = points - upgradeCost;
+    pointsPerClick = pointsPerClick + 1;
+    upgradeCost = upgradeCost + 2;
+
+    document.getElementById("points").textContent = points;
+    document.getElementById("upgradeCost").textContent = upgradeCost;
+  }
+    }
+ {
+  if (points >= upgradeCost) {
+    points = points - upgradeCost;
+    pointsPerClick = pointsPerClick + 1;
+
+    document.getElementById("points").textContent = points;
+  }
+    }
+
+  </script>
+
+</body>
+</html>
