@@ -18,11 +18,27 @@
     let points = 0;
     let pointsPerClick = 1;
     let upgradeCost = 10;
+    function saveGame() {
+  localStorage.setItem("points", points);
+  localStorage.setItem("pointsPerClick", pointsPerClick);
+  localStorage.setItem("upgradeCost", upgradeCost);
+    }
+
+    function loadGame() {
+  points = Number(localStorage.getItem("points")) || 0;
+  pointsPerClick = Number(localStorage.getItem("pointsPerClick")) || 1;
+  upgradeCost = Number(localStorage.getItem("upgradeCost")) || 10;
+
+  document.getElementById("points").textContent = points;
+  document.getElementById("upgradeCost").textContent = upgradeCost;
+    }
 
     function givePoint() {
       points = points + pointsPerClick;
       document.getElementById("points").textContent = points;
+    saveGame();
     }
+
   function upgradeClick() {
   if (points >= upgradeCost) {
     points = points - upgradeCost;
@@ -32,6 +48,7 @@
     document.getElementById("points").textContent = points;
     document.getElementById("upgradeCost").textContent = upgradeCost;
   }
+  saveGame();
     }
  {
   if (points >= upgradeCost) {
@@ -41,7 +58,7 @@
     document.getElementById("points").textContent = points;
   }
     }
-
+loadGame();
   </script>
 
 </body>
